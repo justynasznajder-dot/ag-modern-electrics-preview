@@ -1,19 +1,11 @@
 <!DOCTYPE html>
-<html lang="pl" data-designed-light="1" style="color-scheme: only light;">
+<html lang="pl">
 <head>
 <meta charset="UTF-8">
-
-<meta name="color-scheme" content="light only">
-<meta name="supported-color-schemes" content="light">
-<meta name="nightmode" content="disable">
-<meta name="darkmode" content="disable">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#F3F5F9">
-<meta name="color-scheme" content="light only">
 <title>AG Modern Electrics — Panel usług elektrycznych</title>
 <style>
   :root{
-    color-scheme: only light !important;
     --red:#C63157; --red-dark:#A32846;
     --blue:#3F5E9A; --blue-dark:#2E4A7D; --blue-light:#EAF0FB;
     --ink:#161923; --muted:#666C7C;
@@ -23,8 +15,7 @@
     --shadow-lg: 0 20px 50px rgba(20,25,40,.12);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth; color-scheme: only light !important;}
-  html, body{color-scheme: light only !important; background-color: #F3F5F9 !important; color: #1A1D24 !important;}
+  html{scroll-behavior:smooth;}
   body{font-family:'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color:var(--ink); background:var(--bg); line-height:1.55;}
   img{max-width:100%; display:block;}
   a{color:inherit; text-decoration:none;}
@@ -125,20 +116,6 @@
   footer a:hover{color:var(--red);}
   .foot-bottom{padding-top:20px; display:flex; justify-content:space-between; font-size:12.5px; color:var(--muted); flex-wrap:wrap; gap:10px;}
 
-  
-  /* Fallback gdy Android/Chrome Auto Dark mimo wszystko odwraca kolory */
-  html[data-force-light="1"]{
-    filter: invert(1) hue-rotate(180deg) !important;
-  }
-  html[data-force-light="1"] img,
-  html[data-force-light="1"] video,
-  html[data-force-light="1"] svg,
-  html[data-force-light="1"] .no-force-light-invert{
-    filter: invert(1) hue-rotate(180deg) !important;
-  }
-  input, select, textarea, button{
-    color-scheme: only light !important;
-  }
   @media (max-width:980px){
     .hero-card{grid-template-columns:1fr; padding:34px;}
     .tiles{grid-template-columns:1fr 1fr;}
@@ -147,7 +124,6 @@
     .test-grid{grid-template-columns:1fr 1fr;}
     .foot-grid{grid-template-columns:1fr 1fr; gap:28px;}
   }
-  
   @media (max-width:720px){
     nav{display:none;} .burger{display:flex;}
     section{padding:40px 0;}
@@ -162,33 +138,6 @@
     .foot-card{padding:26px;}
   }
 </style>
-<script>
-(function(){
-  try{
-    document.documentElement.style.colorScheme = 'only light';
-    var designedLight = document.documentElement.getAttribute('data-designed-light') !== '0';
-    var isSamsung = /SamsungBrowser/i.test(navigator.userAgent || '');
-    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    // Samsung Internet często odwraca kolory na poziomie przeglądarki — probe tego nie widzi
-    if (designedLight && isSamsung) { // Samsung Internet dark mode często nie da się wykryć inaczej
-      document.documentElement.setAttribute('data-force-light', '1');
-      return;
-    }
-    var probe = document.createElement('div');
-    probe.style.cssText = 'position:fixed;left:-99999px;top:0;width:16px;height:16px;background:#ffffff;color:#000000;border:1px solid #ffffff;color-scheme:only light;pointer-events:none;z-index:-1;';
-    (document.body || document.documentElement).appendChild(probe);
-    var run = function(){
-      var bg = getComputedStyle(probe).backgroundColor || '';
-      var m = bg.match(/\d+/g);
-      if (designedLight && m && Number(m[0]) < 250) {
-        document.documentElement.setAttribute('data-force-light', '1');
-      }
-      if (probe.parentNode) probe.parentNode.removeChild(probe);
-    };
-    requestAnimationFrame(function(){ requestAnimationFrame(run); });
-  }catch(e){}
-})();
-</script>
 </head>
 <body>
 
