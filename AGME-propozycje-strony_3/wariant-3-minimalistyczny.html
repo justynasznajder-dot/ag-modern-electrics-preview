@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="pl" style="color-scheme: only light;">
+<html lang="pl" data-designed-light="1" style="color-scheme: only light;">
 <head>
 <meta charset="UTF-8">
 
-<meta name="color-scheme" content="only light">
+<meta name="color-scheme" content="light only">
 <meta name="supported-color-schemes" content="light">
 <meta name="nightmode" content="disable">
 <meta name="darkmode" content="disable">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#FDFCFA">
-<meta name="color-scheme" content="only light">
+<meta name="color-scheme" content="light only">
 <title>AG Modern Electrics — Elektryka z klasą</title>
 <style>
   :root{
@@ -24,7 +24,7 @@
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth; color-scheme: only light !important;}
-  html, body{color-scheme: only light !important; background-color: var(--bg) !important;}
+  html, body{color-scheme: light only !important; background-color: #FDFCFA !important; color: #1A1D24 !important;}
   body{
     font-family:'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     color:var(--ink); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased;
@@ -174,17 +174,24 @@
 (function(){
   try{
     document.documentElement.style.colorScheme = 'only light';
+    var designedLight = document.documentElement.getAttribute('data-designed-light') !== '0';
+    var isSamsung = /SamsungBrowser/i.test(navigator.userAgent || '');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Samsung Internet często odwraca kolory na poziomie przeglądarki — probe tego nie widzi
+    if (designedLight && isSamsung) { // Samsung Internet dark mode często nie da się wykryć inaczej
+      document.documentElement.setAttribute('data-force-light', '1');
+      return;
+    }
     var probe = document.createElement('div');
     probe.style.cssText = 'position:fixed;left:-99999px;top:0;width:16px;height:16px;background:#ffffff;color:#000000;border:1px solid #ffffff;color-scheme:only light;pointer-events:none;z-index:-1;';
     (document.body || document.documentElement).appendChild(probe);
     var run = function(){
       var bg = getComputedStyle(probe).backgroundColor || '';
       var m = bg.match(/\d+/g);
-      // Auto Dark zamienia #fff na ciemny kolor — wtedy przywracamy wygląd przez podwójną inwersję
-      if(m && Number(m[0]) < 250){
-        document.documentElement.setAttribute('data-force-light','1');
+      if (designedLight && m && Number(m[0]) < 250) {
+        document.documentElement.setAttribute('data-force-light', '1');
       }
-      if(probe.parentNode) probe.parentNode.removeChild(probe);
+      if (probe.parentNode) probe.parentNode.removeChild(probe);
     };
     requestAnimationFrame(function(){ requestAnimationFrame(run); });
   }catch(e){}
