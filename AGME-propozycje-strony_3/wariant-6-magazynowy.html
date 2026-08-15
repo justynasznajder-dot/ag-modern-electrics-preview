@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="only light">
 <meta name="theme-color" content="#FFFFFF">
 <title>AG Modern Electrics — Magazyn realizacji</title>
 <style>
@@ -146,10 +146,10 @@
   }
 
   /* Samsung Internet: „oszukać” auto-dark — deklarujemy dark, ale zostawiamy zaprojektowane kolory */
-  :root { color-scheme: light; }
+  :root { color-scheme: only light; }
   @media (prefers-color-scheme: dark) {
     :root {
-      color-scheme: light;
+      color-scheme: only light;
       --bg: #FFFFFF;
       --ink: #1A1D24;
     }
