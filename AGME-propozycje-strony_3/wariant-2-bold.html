@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" style="color-scheme: only light;">
 <head>
 <meta charset="UTF-8">
+
+<meta name="color-scheme" content="only light">
+<meta name="supported-color-schemes" content="light">
+<meta name="nightmode" content="disable">
+<meta name="darkmode" content="disable">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light only">
+<meta name="color-scheme" content="only light">
 <title>AG Modern Electrics — Energia w nowym wydaniu</title>
 <style>
   :root{
-    color-scheme: light only;
+    color-scheme: only light !important;
     --red:#E23A63;
     --red2:#C63157;
     --blue:#5A7FC7;
@@ -20,7 +25,8 @@
     --radius:16px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; color-scheme: only light !important;}
+  html, body{color-scheme: only light !important;}
   body{
     font-family:'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background:var(--ink); color:#fff; line-height:1.6; -webkit-font-smoothing:antialiased;
