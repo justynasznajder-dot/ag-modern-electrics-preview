@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FFFFFF">
 <title>AG Modern Electrics — Elektryka. Precyzyjnie.</title>
 <style>
   :root{
@@ -142,6 +144,20 @@
     .steps{grid-template-columns:1fr;}
     .foot-grid{grid-template-columns:1fr; gap:24px;}
     .foot-bottom{flex-direction:column; text-align:center;}
+  }
+
+  /* Samsung Internet: „oszukać” auto-dark — deklarujemy dark, ale zostawiamy zaprojektowane kolory */
+  :root { color-scheme: light; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: light;
+      --bg: #FFFFFF;
+      --ink: #141414;
+    }
+    html, body {
+      background-color: #FFFFFF !important;
+      color: #141414 !important;
+    }
   }
 </style>
 </head>

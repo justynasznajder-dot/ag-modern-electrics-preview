@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0C0E14">
 <title>AG Modern Electrics — Energia w nowym wydaniu</title>
 <style>
   :root{
@@ -168,6 +170,19 @@
     .cta-final h2{font-size:30px;}
     .foot-grid{grid-template-columns:1fr; gap:30px;}
     .foot-bottom{flex-direction:column; text-align:center;}
+  }
+
+  /* Samsung Internet: deklarujemy dark mode w kolorach projektu (tu --ink = tło) */
+  :root { color-scheme: dark; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --ink: #0C0E14;
+    }
+    html, body {
+      background-color: #0C0E14 !important;
+      color: #ffffff !important;
+    }
   }
 </style>
 </head>

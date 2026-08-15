@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FFFFFF">
 <title>AG Modern Electrics — Panel usług</title>
 <style>
   :root{
@@ -124,6 +126,20 @@
     .steps{grid-template-columns:1fr;}
     .cta-band{flex-direction:column; text-align:center; padding:30px 22px;}
     .footer-inner{flex-direction:column; text-align:center;}
+  }
+
+  /* Samsung Internet: „oszukać” auto-dark — deklarujemy dark, ale zostawiamy zaprojektowane kolory */
+  :root { color-scheme: light; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: light;
+      --bg: #FFFFFF;
+      --ink: #1A1D24;
+    }
+    html, body {
+      background-color: #FFFFFF !important;
+      color: #1A1D24 !important;
+    }
   }
 </style>
 </head>

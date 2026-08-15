@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F6F7FA">
 <title>AG Modern Electrics — Propozycje projektu strony</title>
 <style>
   :root{
@@ -53,6 +55,25 @@
     .grid{grid-template-columns:1fr;}
     header{padding:40px 0 10px;}
     h1{font-size:26px;}
+  }
+
+  /* Samsung Internet: „oszukać” auto-dark — deklarujemy dark, ale zostawiamy zaprojektowane kolory */
+  :root { color-scheme: light; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: light;
+      --bg: #F6F7FA;
+      --ink: #1A1D24;
+    }
+    html, body {
+      background-color: #F6F7FA !important;
+      color: #1A1D24 !important;
+    }
+    .card, .note, .btn {
+      background-color: #ffffff !important;
+      color: #1A1D24 !important;
+    }
+    .body p, .note p, .note ul, header p, footer { color: #5B6172 !important; }
   }
 </style>
 </head>
